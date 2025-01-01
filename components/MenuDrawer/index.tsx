@@ -47,9 +47,9 @@ export default function MyDrawer() {
           { text: "وبلاگ", icon: <ArticleIcon /> },
         ].map(({ text, icon }) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton sx={{ direction: "ltr" }}>
               <ListItemIcon color="secondary.main">{icon}</ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={text} sx={{ textAlign: "right" }} />
             </ListItemButton>
           </ListItem>
         ))}

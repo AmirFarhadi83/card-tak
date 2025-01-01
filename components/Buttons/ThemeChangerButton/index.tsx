@@ -12,7 +12,7 @@ const ThemeTogglerButton = () => {
   const { themeMode, toggleTheme } = useThemeContext();
 
   return (
-    <BoxRow sx={{ width: "100%" }}>
+    <BoxRow sx={{ width: "100%", direction: "ltr" }}>
       <Button
         variant="outlined"
         color="primary"
@@ -21,7 +21,7 @@ const ThemeTogglerButton = () => {
           e.stopPropagation();
           toggleTheme();
         }}
-        endIcon={themeMode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
+        startIcon={themeMode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
       >
         <Typography variant="h6">
           {themeMode === "dark" ? "حالت تاریک" : "حالت روشن"}

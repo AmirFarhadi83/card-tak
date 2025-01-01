@@ -85,7 +85,7 @@ const Carousel = () => (
 export default function Banner() {
   const [domLoaded, setDomLoaded] = useState(false);
   useEffect(() => setDomLoaded(true), []);
-  
+
   return (
     <Box
       sx={{
