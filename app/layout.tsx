@@ -1,30 +1,11 @@
 // next
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 // mui + styles
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import RTLProvider from "@/styles/rtlProvider";
 import { ThemeProvider } from "@/utils/context/ThemeContext";
 import { CssBaseline } from "@mui/material";
+import { yekan, geistSans, geistMono } from "@/styles/fonts";
 import "@/styles/globals.css";
-
-const geistSans = localFont({
-  src: "./../public/fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-
-const geistMono = localFont({
-  src: "./../public/fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
-const yekan = localFont({
-  src: "./../public/fonts/Far_Yekan.ttf",
-  variable: "--font-yekan",
-  weight: "100 200 300 400 500 600 700 800 900",
-});
 
 export const metadata: Metadata = {
   title: "Card-Tak",
@@ -44,7 +25,7 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider>
             <CssBaseline />
-            <RTLProvider>{children}</RTLProvider>
+            {children}
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

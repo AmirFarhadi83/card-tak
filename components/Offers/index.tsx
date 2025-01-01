@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 // Sample slide content
 const slideContent = [
@@ -26,7 +27,7 @@ const boxStyle = {
   width: { xs: "auto", sm: 210, md: 220, lg: 230, xl: 240 },
   height: { xs: 350, sm: 360, md: 370, lg: 380, xl: 390 },
   userSelect: "none,",
-  borderRadius: "20px",
+  borderRadius: "15px",
   bgcolor: "background.paper",
   "@media and screen(min-width: 0px)": { width: "450px !important" },
 };
@@ -53,8 +54,12 @@ const Carousel = () => (
     breakpoints={{
       0: { slidesPerView: 1 },
       450: { slidesPerView: 2 },
+      600: { slidesPerView: 2.1 },
+      700: { slidesPerView: 2.5 },
       836: { slidesPerView: 3 },
+      980: { slidesPerView: 3.5 },
       1115: { slidesPerView: 4 },
+      1350: { slidesPerView: 4.5 },
       1500: { slidesPerView: 5 },
       1800: { slidesPerView: 6 },
       2160: { slidesPerView: 7 },
@@ -68,10 +73,10 @@ const Carousel = () => (
         <Box sx={boxStyle} className="slide-content">
           <BoxColumn
             sx={{
-              width: "calc( 100% - 32px )",
+              width: "calc( 100% - 16px )",
               height: "100%",
               justifyContent: "flex-start",
-              p: 2,
+              p: 1,
             }}
           >
             <Box
@@ -99,11 +104,11 @@ const Carousel = () => (
                 sx={{
                   position: "absolute",
                   top: "95%",
-                  right: "27%",
+                  right: "center",
                   bgcolor: "primary.main",
                   color: "white",
                   p: 0.5,
-                  borderRadius: "0 10px 0 10px",
+                  borderRadius: "10px 0 10px 0",
                 }}
               >
                 00:15:24:32
@@ -134,6 +139,9 @@ const Carousel = () => (
 );
 
 export default function Offers() {
+  const [domLoaded, setDomLoaded] = useState(false);
+  useEffect(() => setDomLoaded(true), []);
+
   return (
     <>
       <BoxColumn
@@ -170,7 +178,7 @@ export default function Offers() {
             </Typography>
           </Button>
         </BoxRow>
-        <Carousel />
+        {domLoaded && <Carousel />}
       </BoxColumn>
     </>
   );

@@ -9,6 +9,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { EffectCreative } from "swiper/modules";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 // Sample slide content
 const slideContent = [
@@ -82,6 +83,9 @@ const Carousel = () => (
 );
 
 export default function Banner() {
+  const [domLoaded, setDomLoaded] = useState(false);
+  useEffect(() => setDomLoaded(true), []);
+  
   return (
     <Box
       sx={{
@@ -91,11 +95,11 @@ export default function Banner() {
         minHeight: { xs: 200, sm: 300, md: 400, lg: 500, xl: 600 },
         bgcolor: "background.default",
         p: { xs: 1, sm: 2 },
-        direction: "rtl",
+        direction: "ltr",
         userSelect: "none",
       }}
     >
-      <Carousel />
+      {domLoaded && <Carousel />}
     </Box>
   );
 }
